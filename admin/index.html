@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin · CIRCLO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="admin.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='22' fill='none' stroke='%23C8A96B' stroke-width='7'/></svg>">
+</head>
+<body class="admin" hidden>
+<a class="skip" href="#view">Skip to content</a>
+<aside class="side" id="side" aria-label="Admin navigation">
+  <a href="#dashboard" class="logo light"><span class="logo-o"></span>CIRCLO</a>
+  <nav>
+    <a href="#dashboard" data-v="dashboard"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>Dashboard</a>
+    <a href="#products" data-v="products"><svg class="ic" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Products<b class="count" id="nPending"></b></a>
+    <a href="#orders" data-v="orders"><svg class="ic" viewBox="0 0 24 24"><path d="M9 5h10M9 12h10M9 19h10M4 5h.01M4 12h.01M4 19h.01"/></svg>Orders</a>
+    <a href="#pickups" data-v="pickups"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg>Pickups</a>
+    <a href="#deliveries" data-v="deliveries"><svg class="ic" viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Deliveries</a>
+    <a href="#enquiries" data-v="enquiries"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg>Enquiries<b class="count" id="nEnq"></b></a>
+    <a href="#audit" data-v="audit"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Activity</a>
+    <a href="#settings" data-v="settings"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>Settings</a>
+  </nav>
+  <div class="side-foot"><span id="who" class="small"></span><a href="../index.html" target="_blank" rel="noopener" class="small">View website ↗</a><button class="btn btn-sm btn-outline-light" id="logout">Sign out</button></div>
+</aside>
+<div class="scrim" id="sideScrim"></div>
+<div class="main-col">
+  <header class="topbar">
+    <button class="icon-btn side-btn" id="sideBtn" aria-label="Open navigation" aria-controls="side" aria-expanded="false"><svg class="ic" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <h1 id="viewTitle">Dashboard</h1>
+    <button class="btn btn-sm btn-ghost" id="refresh"><svg class="ic" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>Refresh</button>
+  </header>
+  <main id="view" class="view" tabindex="-1" aria-live="polite"></main>
+</div>
+<div class="drawer-scrim" id="drawerScrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
+  <header><h2 id="drawerTitle"></h2><button class="dlg-x" id="drawerClose" aria-label="Close">×</button></header>
+  <div class="drawer-body" id="drawerBody"></div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="../config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
